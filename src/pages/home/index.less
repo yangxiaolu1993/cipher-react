@@ -1,0 +1,164 @@
+@import '../../static/less/common.less';
+
+@bannerHeight: 207px;
+
+.homePage {
+  min-height: @HEIGHT;
+  .left();
+  /* banner图 */
+  .banner {
+    position: relative;
+    width: @WIDTH;
+    height: @bannerHeight;
+    background: url('../../static/img/homebanner.png') no-repeat;
+    background-size: 100% @bannerHeight;
+
+    /* 今日能量 */
+    .energyToday {
+      position: absolute;
+      top: 63px;
+      left: 25px;
+      width: 80px;
+      .center();
+      color: #ffffff;
+
+      .energyTodayNum {
+        .flex-center();
+        width: 62px;
+        height: 61px;
+        margin: 0 auto 9px;
+        background: url('../../static/img/home_today.png') no-repeat;
+        background-size: 62px 61px;
+        font-size: 54px;
+      }
+    }
+
+    /* 球 */
+    .circle {
+      position: absolute;
+      right: 15px;
+      top: 69px;
+
+      img {
+        width: 59px;
+        height: 66px;
+      }
+    }
+  }
+
+
+  /* 查密码、测关系 */
+  .baseMenu {
+    padding: 0 25px 30px;
+    display: flex;
+    justify-content: space-between;
+
+    .baseMenuItem {
+      margin-top: 16px;
+      font-size: 13px;
+      color: #1e334a;
+      text-align: center;
+
+      img {
+        width: 82px;
+        height: 81px;
+        vertical-align: top;
+      }
+    }
+  }
+
+  // 财运指南
+  .fortune {
+    padding: 0 14px;
+
+    .fortuneTitle {
+      padding-bottom: 3px;
+      font-size: 15px;
+      color: #8064ED;
+      .left();
+      .fontW();
+    }
+
+    .fortuneMain {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+
+      .fortuneItem {
+        .flex-center();
+        width: 72px;
+        height: 40px;
+        margin-top: 15px;
+        background-image: linear-gradient(133deg, #6E8DFF 0%, #A45EFB 100%);
+        border-radius: 5px;
+        font-size: 11px;
+        color: #FFFFFF;
+      }
+    }
+  }
+
+  // 深度报告
+  .depth {
+    width: 332px;
+    margin: 20px auto 0;
+    .depthTitle {
+      .flex-vertical();
+      margin-bottom: 20px;
+      font-size: 16px;
+      color: #313131;
+      .fontW();
+      img{
+        margin-right: 8px;
+        width: 20px;
+        height: 20px;
+      }
+    }
+
+    .depthMain {
+      height: 78px;
+      background: #fff;
+      border: 1px solid #c8c8c8;
+      border-radius: 5px;
+      display: flex;
+      align-items: center;
+      margin-bottom: 14px;
+      padding: 0 14px;
+
+      .depthItemIcon {
+        img {
+          width: 60px;
+          height: 60px;
+          border-radius: 50%;
+          vertical-align: top;
+          margin-right: 14px;
+        }
+      }
+
+      .depthItemContent {
+        width: 100%;
+
+        .depthItemTitle {
+          position: relative;
+          font-size: 14px;
+          color: #4a4a4a;
+          .fontW();
+
+          img {
+            position: absolute;
+            top: 50%;
+            right: 0;
+            width:  7px;
+            height: 13px;
+            margin-top: -5px;
+          }
+        }
+
+        .depthItemDesc {
+          margin-top: 7px;
+          color: #999999;
+        }
+      }
+    }
+  }
+
+}
