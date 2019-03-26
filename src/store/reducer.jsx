@@ -1,16 +1,24 @@
+import { GET_REPORT_DATA,SET_AUTHED } from "./actionTypes";
+
 const defaultState = {
-  fortune: [
-    { id: 1, name: "赚钱禁忌" },
-    { id: 2, name: "家庭旺财" },
-    { id: 3, name: "偏财运" },
-    { id: 4, name: "加薪指数" },
-    { id: 5, name: "升职跳槽" },
-    { id: 6, name: "财运提升" },
-    { id: 7, name: "轻松赚钱" },
-    { id: 8, name: "工作业绩" }
-  ]
+  authed:false, //判断是否是从首页进入，如果不是返回首页
+  authPath:'/', //设置未从首页进入返回的页面
+  fortune: [],
+  depth:[]
 };
 const reducer = (state = defaultState, action) => {
+  if(action.type === GET_REPORT_DATA){
+    let newState = Object.assign({},state)
+    newState.fortune = [...action.data.goods_mini_report_info_set]
+    newState.depth = [...action.data.goods_report_info_set]
+    return newState;
+  }
+  if(action.type === SET_AUTHED){
+    let newState = Object.assign({},state)
+    newState.authed = action.data.isAuth
+    newState.authPath = action.data.path || newState.authPath
+    return newState;
+  }
   return state;
 };
 

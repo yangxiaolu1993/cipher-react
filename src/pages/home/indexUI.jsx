@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+// import { Link } from "react-router-dom";
 
 class IndexUI extends Component {
   render() {
@@ -36,7 +37,7 @@ class IndexUI extends Component {
             {this.props.fortune.map(item => {
               return (
                 <div className="fortuneItem" key={item.id}>
-                  {item.name}
+                  {item.report_name}
                 </div>
               );
             })}
@@ -51,21 +52,29 @@ class IndexUI extends Component {
             />
             深度报告
           </div>
-          <div className="depthMain">
-            <div className="depthItemIcon">
-              <img src={require("../../static/img/home_deep1.png")} alt="" />
-            </div>
-            <div className="depthItemContent">
-              <div className="depthItemTitle">
-                恋人相处指南
-                <img
-                  src={require("../../static/img/single_arrow_icon.png")}
-                  alt=""
-                />
+          {this.props.depth.map(item => {
+            return (
+              <div
+                className="depthMain"
+                key={item.id}
+                onClick={()=>(this.props.depthRoute(item.id))}
+              >
+                <div className="depthItemIcon">
+                  <img src={item.report_small_img_url} alt="" />
+                </div>
+                <div className="depthItemContent">
+                  <div className="depthItemTitle">
+                    {item.report_name}
+                    <img
+                      src={require("../../static/img/single_arrow_icon.png")}
+                      alt=""
+                    />
+                  </div>
+                  <div className="depthItemDesc">{item.report_copywriting}</div>
+                </div>
               </div>
-              <div className="depthItemDesc">depth</div>
-            </div>
-          </div>
+            );
+          })}
         </div>
       </div>
     );

@@ -1,27 +1,52 @@
 import React, { Component } from "react";
-import store from '../../store';
-import InterServer from '../../static/config/server';
-import IndexUI from './indexUI'
+import IndexUI from "./indexUI";
 import "./index.less";
+import store from "../../store";
 
 class Home extends Component {
-  constructor(props){
-    super(props)
-    this.state = {
-      fortune:[...store.getState().fortune]
-    }
+  constructor(props) {
+    super(props);
+    this.storeChange = this.storeChange.bind(this);
+    this.depthRoute = this.depthRoute.bind(this);
+    this.state = {};
+
+    store.subscribe(this.storeChange);
   }
   render() {
     return (
-      <IndexUI fortune={this.state.fortune}></IndexUI>
+      <IndexUI
+        fortune={store.getState().fortune}
+        depth={store.getState().depth}
+        depthRoute={this.depthRoute}
+      />
     );
   }
-  componentDidMount(){
-    InterServer.codeReading({
-      id:1
-    }).then((res)=>{
-      console.log(res)
-    })
+  // 深度报告跳转
+  depthRoute(index) {
+    let url = "";
+    switch (index) {
+      case "rml001":
+        url = "/lover";
+        break;
+      case "rms001":
+        url = "/lover";
+        break;
+      case "21":
+        url = "/lover";
+        break;
+      default:
+        url = "/";
+    }
+    // this.props.history.push(url+'/21')
+    this.props.history.push({
+      pathname:url,
+      state:{
+        id:index
+      }
+    });
+  }
+  storeChange() {
+    this.setState(store.getState());
   }
 }
 

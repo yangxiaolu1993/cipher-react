@@ -1,17 +1,11 @@
 import React, { Component } from "react";
-import { Route, BrowserRouter } from "react-router-dom";
-import Home from '../pages/home';
-import Lover from '../pages/lover';
+import RouterConfig from './config'
+import {routes} from './routes'
 
 class Router extends Component {
   render() {
     return (
-      <BrowserRouter>
-        <div>
-          <Route path="/" exact={true} component={Home} />
-          <Route path="/lover" exact={true} component={Lover} />
-        </div>
-      </BrowserRouter>
+      <RouterConfig routes={routes}></RouterConfig>
     );
   }
 }

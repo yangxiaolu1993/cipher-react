@@ -8,6 +8,9 @@ class Lover extends Component {
             </div>
         );
     }
+    componentDidMount(){
+        console.log(this.props.location.state)
+    }
 }
 
 export default Lover;
